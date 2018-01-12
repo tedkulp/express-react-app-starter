@@ -1,0 +1,29 @@
+version: '2'
+services:
+  mongo:
+    image: mongo
+  redis:
+    image: redis
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    environment:
+      DOCKER_MONGODB_HOST: "mongodb"
+      DOCKER_REDIS_HOST: "redis"
+    depends_on:
+      - mongo
+      - redis
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+  haproxy:
+    build:
+      context: .
+      dockerfile: ./Dockerfile.haproxy
+    ports:
+      - "80:80"
+    depends_on:
+      - frontend
+      - backend

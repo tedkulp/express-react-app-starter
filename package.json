@@ -1,0 +1,15 @@
+{
+  "name": "express-create-react-app-starter",
+  "version": "0.0.1",
+  "description": "Create a react app and express server",
+  "main": "index.js",
+  "author": "Ted Kulp <ted@tedkulp.com>",
+  "license": "MIT",
+  "dependencies": {
+    "concurrently": "^3.5.1",
+    "create-react-app": "^1.4.3"
+  },
+  "scripts": {
+    "dev": "pwd && concurrently \"pwd && cd frontend && BROWSER=none PORT=5000 yarn start\" \"pwd && docker-compose up\""
+  }
+}
