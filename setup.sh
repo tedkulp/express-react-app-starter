@@ -18,4 +18,4 @@ cd src
 
 cp -R ../../frontend-src/* .
 
-cd ..
+cd ../..
