@@ -1,22 +1,22 @@
 {
-    "name": "backend",
-    "version": "1.0.0",
-    "main": "index.js",
-    "author": "Ted Kulp <ted@tedkulp.com>",
-    "license": "MIT",
-    "scripts": {
-      "start": "node index.js"
-    },
-    "dependencies": {
-      "bluebird": "^3.5.1",
-      "express": "^4.16.2",
-      "lodash": "^4.17.4",
-      "moment": "^2.20.1",
-      "redis": "^2.8.0"
-    },
-    "devDependencies": {
-      "chai": "^4.1.2",
-      "mocha": "^4.1.0"
-    }
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Ted Kulp <ted@tedkulp.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "bluebird": "^3.5.1",
+    "express": "^4.16.2",
+    "lodash": "^4.17.4",
+    "moment": "^2.20.1",
+    "nodemon": "^1.14.11",
+    "redis": "^2.8.0"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^4.1.0"
   }
-  
+}
