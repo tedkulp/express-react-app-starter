@@ -6,6 +6,8 @@ import rootSaga from './sagas';
 import { routerMiddleware } from 'react-router-redux';
 import logger from 'redux-logger';
 import createHistory from 'history/createBrowserHistory';
+import socket from  '../util/socket';
+
 const sagaMiddleware = createSagaMiddleware();
 
 export function createStore(history, client, data) {
