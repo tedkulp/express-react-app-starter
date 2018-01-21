@@ -11,5 +11,6 @@ const redisClient = require("redis").createClient({
 });
 
 require('./lib/endpoints')(app);
+require('./lib/models');
 
 app.listen(PORT, () => console.log(`Example app listening on port ${PORT}!`))
