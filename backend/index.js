@@ -10,8 +10,6 @@ const redisClient = require("redis").createClient({
     port: process.env.DOCKER_REDIS_PORT,
 });
 
-app.get('/api/status', (req, res) => {
-    res.send('OK');
-});
+require('./lib/endpoints')(app);
 
 app.listen(PORT, () => console.log(`Example app listening on port ${PORT}!`))
