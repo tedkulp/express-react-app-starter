@@ -10,10 +10,13 @@
   "dependencies": {
     "bluebird": "^3.5.1",
     "express": "^4.16.2",
+    "jwt-simple": "^0.5.1",
     "lodash": "^4.17.4",
     "moment": "^2.20.1",
     "mongoose": "^5.0.1",
     "nodemon": "^1.14.11",
+    "passport": "^0.4.0",
+    "passport-jwt": "^3.0.1",
     "redis": "^2.8.0"
   },
   "devDependencies": {
