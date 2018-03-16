@@ -5,7 +5,8 @@
   "author": "Ted Kulp <ted@tedkulp.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "watch": "./node_modules/.bin/nodemon -i ./node_modules index.js"
   },
   "dependencies": {
     "bluebird": "^3.5.1",

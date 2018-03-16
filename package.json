@@ -10,7 +10,7 @@
     "create-react-app": "^1.4.3"
   },
   "scripts": {
-    "dev": "pwd && concurrently \"pwd && cd frontend && BROWSER=none PORT=5000 yarn start\" \"pwd && cd backend && ./wait-for-services.sh && ./node_modules/.bin/nodemon index.js\" \"pwd && docker-compose up\"",
-    "dev-build": "pwd && concurrently \"pwd && cd frontend && BROWSER=none PORT=5000 yarn start\" \"pwd && cd backend && ./wait-for-services.sh && ./node_modules/.bin/nodemon index.js\" \"pwd && docker-compose up --build\""
+    "dev": "pwd && concurrently \"pwd && docker-compose up\" \"pwd && cd frontend && BROWSER=none PORT=5000 yarn start\" \"pwd && cd backend && ./wait-for-services.sh && yarn watch\"",
+    "dev-build": "pwd && concurrently \"pwd && docker-compose up --build\" \"pwd && cd frontend && BROWSER=none PORT=5000 yarn start\" \"pwd && cd backend && ./wait-for-services.sh && yarn watch\""
   }
 }
