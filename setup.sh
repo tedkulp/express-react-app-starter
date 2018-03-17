@@ -2,6 +2,10 @@
 
 yarn install
 
+cd backend
+yarn install
+cd ..
+
 if [ ! -d "frontend" ]; then
     ./node_modules/.bin/create-react-app frontend
     cp ./Dockerfile.frontend ./frontend/Dockerfile
