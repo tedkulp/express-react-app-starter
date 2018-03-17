@@ -1,6 +1,7 @@
 #!/bin/sh
 
-DOCKER_HOST=$(docker-machine ip)
+#DOCKER_HOST=$(docker-machine ip)
+DOCKER_HOST="127.0.0.1"
 HOST=${1:-$DOCKER_HOST}
 
 set -eu pipefail

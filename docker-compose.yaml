@@ -13,7 +13,7 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     environment:
-      DOCKER_MONGODB_HOST: "mongodb"
+      DOCKER_MONGODB_HOST: "mongo"
       DOCKER_REDIS_HOST: "redis"
       JWT_ACCESS_CODE: "F42EEF514E67DC5FF17E8F0B60BF18B31F0E64ED6A46067855104033A82BC241"
     depends_on:
@@ -23,12 +23,21 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-  haproxy:
+  nginx:
     build:
       context: .
-      dockerfile: ./Dockerfile.haproxy
+      dockerfile: ./Dockerfile.nginx
     ports:
       - "80:80"
     depends_on:
       - frontend
       - backend
+  # haproxy:
+  #   build:
+  #     context: .
+  #     dockerfile: ./Dockerfile.haproxy
+  #   ports:
+  #     - "80:80"
+  #   depends_on:
+  #     - frontend
+  #     - backend
