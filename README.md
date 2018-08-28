@@ -27,6 +27,9 @@ This will do a yarn install to get create-react-app, create the frontend, and th
 all the packages for the frontend as well. It will also build all the initial docker containers
 and make sure everything is ready to go for the first run.
 
+When you're happy with how it works, run `./cleanup.sh` to remove all of the setup files
+and start a few git repository.
+
 ## Running
 
 In the root directory, run `yarn dev`. This will start the docker containers with docker-compose
