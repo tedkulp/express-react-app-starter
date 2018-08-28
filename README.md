@@ -20,15 +20,17 @@ Run the setup.sh script. This will
 git clone https://github.com/tedkulp/express-create-react-app-starter.git my-project
 cd my-project
 ./setup.sh
+docker-compose build --pull
 ```
 
 This will do a yarn install to get create-react-app, create the frontend, and then yarn install
-all the packages for the frontend as well.
+all the packages for the frontend as well. It will also build all the initial docker containers
+and make sure everything is ready to go for the first run.
 
 ## Running
 
-In the root directory, run `yarn dev`. This will create the docker containers and start them up
-with docker-compose and also start another instance of the frontend so that code can be hot reloaded.
+In the root directory, run `yarn dev`. This will start the docker containers with docker-compose
+and also start another instance of the frontend so that code can be hot reloaded.
 
 ## Deployment
 

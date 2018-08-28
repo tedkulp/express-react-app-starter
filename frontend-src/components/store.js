@@ -3,7 +3,7 @@ import thunk from 'redux-thunk';
 import createSagaMiddleware from 'redux-saga';
 import reducer from './reducer';
 import rootSaga from './sagas';
-import { routerMiddleware } from 'react-router-redux';
+import { connectRouter, routerMiddleware } from 'connected-react-router';
 import logger from 'redux-logger';
 import createHistory from 'history/createBrowserHistory';
 import socket from  '../util/socket';
@@ -15,7 +15,7 @@ export function createStore(history, client, data) {
   const historyMiddleware = routerMiddleware(history);
   const middleware = [thunk, historyMiddleware, logger, sagaMiddleware];
   const finalCreateStore = composeEnhancers(applyMiddleware(...middleware))(_createStore);
-  const store = finalCreateStore(reducer, data);
+  const store = finalCreateStore(connectRouter(history)(reducer), data);
 
   return store;
 };
