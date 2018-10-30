@@ -28,7 +28,7 @@ all the packages for the frontend as well. It will also build all the initial do
 and make sure everything is ready to go for the first run.
 
 When you're happy with how it works, run `./cleanup.sh` to remove all of the setup files
-and start a few git repository.
+and start a new git repository.
 
 ## Running
 
