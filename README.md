@@ -14,7 +14,7 @@ packages because everything is moving so fast at the moment.
 
 ## Setup
 
-Run the setup.sh script. This will 
+To set it up, do the following:
 
 ```bash
 git clone https://github.com/tedkulp/express-create-react-app-starter.git my-project
