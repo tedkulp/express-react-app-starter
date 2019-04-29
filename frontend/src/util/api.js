@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from 'axios';
 
 const API_URL = '/api';
 
@@ -20,8 +20,8 @@ const _performRequest = (method, url, params, auth, config = {}) => {
         requestConfig.headers['Authorization'] = localStorage.id_token;
     }
 
-    return axios.request(requestConfig)
-}
+    return axios.request(requestConfig);
+};
 
 export function req(method, url, params, config) {
     return _performRequest(method, url, params, false, config);

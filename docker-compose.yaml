@@ -12,6 +12,8 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
+    volumes:
+      - ./backend:/myapp
     environment:
       DOCKER_MONGODB_HOST: "mongo"
       DOCKER_REDIS_HOST: "redis"
@@ -23,6 +25,8 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
+    volumes:
+      - ./frontend:/myapp
   nginx:
     build:
       context: .
@@ -32,12 +36,3 @@ services:
     depends_on:
       - frontend
       - backend
-  # haproxy:
-  #   build:
-  #     context: .
-  #     dockerfile: ./Dockerfile.haproxy
-  #   ports:
-  #     - "80:80"
-  #   depends_on:
-  #     - frontend
-  #     - backend
