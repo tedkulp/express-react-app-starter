@@ -1,14 +1,16 @@
 import io from 'socket.io-client';
+import ioWildcard from 'socketio-wildcard';
 import _ from 'lodash';
 
-import { dispatch } from '../components/store';
+import { dispatch } from './store';
 
 const socket = io('/');
-const patch = require('socketio-wildcard')(io.Manager);
+const patch = ioWildcard(io.Manager);
+
 patch(socket);
 
 socket.on('*', msg => {
-    var props = _.forOwn(msg.data[1], (v, k) => {
+    const props = _.forOwn(msg.data[1], (v, k) => {
         return [k, v];
     });
     dispatch({
@@ -16,5 +18,9 @@ socket.on('*', msg => {
         type: `socket-action/${msg.data[0].toUpperCase()}`,
     });
 });
+
+export const init = () => {
+    // no op
+};
 
 export default socket;

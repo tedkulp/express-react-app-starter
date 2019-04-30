@@ -1,8 +1,12 @@
 #!/bin/sh
 
+cp .gitignore.post .gitignore
+
 rm -fr .git
-rm -fr setup.sh
-rm -fr cleanup.sh
+rm .gitignore.post
+rm cleanup.sh
+rm docker-compose.yaml.in
+rm setup.sh
 
 git init
 git add .

@@ -6,7 +6,10 @@ import { ConnectedRouter } from 'connected-react-router';
 import './index.scss';
 import App from './App';
 
-import { history, store } from './components/store';
+import { init } from './util/socket';
+import { history, store } from './util/store';
+
+init();
 
 ReactDOM.render(
     <Provider store={store}>
@@ -14,5 +17,6 @@ ReactDOM.render(
             <App />
         </ConnectedRouter>
     </Provider>,
+    // eslint-disable-next-line no-undef
     document.getElementById('root')
 );

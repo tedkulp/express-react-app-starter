@@ -1,32 +1,33 @@
-const passport = require("passport");  
-const passportJWT = require("passport-jwt");
+const passport = require('passport');
+const { ExtractJwt, Strategy } = require('passport-jwt');
 const userModel = require('./models').loadModel('user');
-const ExtractJwt = passportJWT.ExtractJwt;  
-const Strategy = passportJWT.Strategy;  
-const params = {  
+
+const params = {
     secretOrKey: process.env.JWT_ACCESS_CODE || '123456',
     jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
 };
 
-module.exports = function() {  
-    const strategy = new Strategy(params, function(payload, done) {
-        userModel.findOne({id: payload.id}, (err, user) => {
+module.exports = () => {
+    const strategy = new Strategy(params, (payload, done) => {
+        userModel.findOne({ id: payload.id }, (_err, user) => {
             if (user) {
                 return done(null, {
-                    id: user.id
+                    id: user.id,
                 });
-            } else {
-                return done(new Error("User not found"), null);
             }
+
+            return done(new Error('User not found'), null);
         });
     });
+
     passport.use(strategy);
+
     return {
-        initialize: function() {
+        initialize: () => {
             return passport.initialize();
         },
-        authenticate: function() {
-            return passport.authenticate("jwt", { session: false });
-        }
+        authenticate: () => {
+            return passport.authenticate('jwt', { session: false });
+        },
     };
 };

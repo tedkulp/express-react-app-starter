@@ -1,13 +1,16 @@
+// const jwt = require('jwt-simple');
+
 const router = require('express').Router();
-const auth = require("../auth")();
-const jwt = require("jwt-simple");
+const auth = require('../auth')();
 
-router.get('/status', (req, res) => {
+router.get('/status', (_req, res) => {
     res.send('OK');
 });
 
-router.get('/protected', auth.authenticate(), (req, res) => {
+router.get('/protected', auth.authenticate(), (_req, res) => {
     res.send('OK');
 });
 
-module.exports = router;
+module.exports = {
+    router,
+};

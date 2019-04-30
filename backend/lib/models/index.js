@@ -1,16 +1,19 @@
 // Get the main express app instance
 const fs = require('fs');
 
-let models = {};
-let schemas = {};
+const models = {};
+const schemas = {};
 
 (() => {
-    let files = fs.readdirSync(__dirname);
+    const files = fs.readdirSync(__dirname);
 
     files.forEach(fileName => {
         fileName = fileName.replace('.js', '');
+
         if (fileName !== 'index') {
-            let { model, schema } = require('./' + fileName);
+            // eslint-disable-next-line global-require, import/no-dynamic-require
+            const { model, schema } = require(`./${fileName}`);
+
             models[fileName] = model;
             schemas[fileName] = schema;
         }

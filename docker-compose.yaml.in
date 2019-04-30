@@ -17,7 +17,7 @@ services:
     environment:
       DOCKER_MONGODB_HOST: "mongo"
       DOCKER_REDIS_HOST: "redis"
-      JWT_ACCESS_CODE: "KMhkjBPsAu7j48btrQTt3LZy1pOD4oPqdQEYGhEqHF6EE0eKIKPKvZ5AvLcPcngp137a5nl009FwV4sf"
+      JWT_ACCESS_CODE: "REPLACE_ME"
     depends_on:
       - mongo
       - redis

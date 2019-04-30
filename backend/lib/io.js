@@ -1,7 +1,9 @@
-module.exports = http => {
-    const io = require('socket.io')(http, { path: '/socket.io' });
+const socketIo = require('socket.io');
 
-    io.on('connection', function(socket) {
+module.exports = http => {
+    const io = socketIo(http, { path: '/socket.io' });
+
+    io.on('connection', socket => {
         console.log('a user connected');
         socket.emit('somemsg', { message: 'Hi' });
     });
