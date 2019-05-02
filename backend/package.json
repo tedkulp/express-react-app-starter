@@ -5,8 +5,8 @@
   "author": "Ted Kulp <ted@tedkulp.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node index.js",
-    "watch": "./node_modules/.bin/nodemon -i ./node_modules index.js"
+    "start": "node_modules/.bin/ts-node index.ts",
+    "watch": "node_modules/.bin/nodemon --watch '*.ts' --watch 'src/**/*.ts' --exec 'ts-node' index.ts"
   },
   "dependencies": {
     "bluebird": "^3.5.4",
@@ -22,7 +22,23 @@
     "socket.io": "^2.2.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.4",
+    "@babel/node": "^7.2.2",
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@babel/plugin-transform-async-to-generator": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "@babel/preset-typescript": "^7.3.3",
+    "@types/bluebird": "^3.5.26",
+    "@types/mongoose": "^5.3.27",
+    "@types/node": "^11.13.8",
+    "@types/passport-jwt": "^3.0.1",
+    "@types/redis": "^2.8.12",
+    "@types/socket.io": "^2.1.2",
     "chai": "^4.2.0",
-    "mocha": "^5.2.0"
+    "mocha": "^5.2.0",
+    "ts-node": "^8.1.0",
+    "tslint-no-unused-expression-chai": "^0.1.4",
+    "typescript": "^3.4.5"
   }
 }

@@ -1,16 +1,17 @@
-const fs = require('fs');
+import * as fs from 'fs';
 
-const importAll = app => {
+export const init = app => {
     const files = fs.readdirSync(__dirname);
 
     files.forEach(fileName => {
-        if (fileName !== 'index.js') {
+        if (fileName !== 'index.ts') {
             // eslint-disable-next-line global-require, import/no-dynamic-require
             const { router } = require(`./${fileName}`);
-
             app.use('/api', router);
         }
     });
 };
 
-module.exports = importAll;
+export default {
+    init,
+};

@@ -1,6 +1,6 @@
-const socketIo = require('socket.io');
+import * as socketIo from 'socket.io';
 
-module.exports = http => {
+export default http => {
     const io = socketIo(http, { path: '/socket.io' });
 
     io.on('connection', socket => {

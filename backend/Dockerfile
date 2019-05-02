@@ -10,6 +10,6 @@ RUN npm install
 
 ADD . /myapp
 
-CMD ["yarn", "start"]
+CMD ["npm", "run", "start"]
 
 EXPOSE 3000

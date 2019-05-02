@@ -1,7 +1,8 @@
-// const jwt = require('jwt-simple');
+import { Router } from 'express';
+import Auth from '../auth';
 
-const router = require('express').Router();
-const auth = require('../auth')();
+export const router = Router();
+const auth = Auth();
 
 router.get('/status', (_req, res) => {
     res.send('OK');
@@ -11,6 +12,6 @@ router.get('/protected', auth.authenticate(), (_req, res) => {
     res.send('OK');
 });
 
-module.exports = {
+export default {
     router,
 };

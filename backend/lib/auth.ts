@@ -1,15 +1,17 @@
-const passport = require('passport');
-const { ExtractJwt, Strategy } = require('passport-jwt');
-const userModel = require('./models').loadModel('user');
+import * as passport from 'passport';
+import { ExtractJwt, Strategy } from 'passport-jwt';
+import { loadModel } from './models';
 
-const params = {
+const userModel = loadModel('user');
+
+const opts = {
     secretOrKey: process.env.JWT_ACCESS_CODE || '123456',
     jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
 };
 
-module.exports = () => {
-    const strategy = new Strategy(params, (payload, done) => {
-        userModel.findOne({ id: payload.id }, (_err, user) => {
+export default () => {
+    const strategy = new Strategy(opts, (payload, done) => {
+        userModel.findOne({ id: payload.sub }, (_err, user) => {
             if (user) {
                 return done(null, {
                     id: user.id,

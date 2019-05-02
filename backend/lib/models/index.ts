@@ -1,5 +1,4 @@
-// Get the main express app instance
-const fs = require('fs');
+import * as fs from 'fs';
 
 const models = {};
 const schemas = {};
@@ -20,11 +19,20 @@ const schemas = {};
     });
 })();
 
-module.exports = {
-    loadModel: name => {
-        return models[name];
-    },
-    loadSchema: name => {
-        return schemas[name];
-    },
+export const init = () => {
+    return;
+};
+
+export const loadModel = name => {
+    return models[name];
+};
+
+export const loadSchema = name => {
+    return schemas[name];
+};
+
+export default {
+    init,
+    loadModel,
+    loadSchema,
 };
