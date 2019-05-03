@@ -1,5 +1,5 @@
-import * as Bluebird from 'bluebird';
-import * as mongoose from 'mongoose';
+import Bluebird from 'bluebird';
+import mongoose from 'mongoose';
 
 (mongoose as any).Promise = Bluebird;
 

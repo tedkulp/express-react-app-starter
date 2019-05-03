@@ -1,4 +1,4 @@
-import * as socketIo from 'socket.io';
+import socketIo from 'socket.io';
 
 export default http => {
     const io = socketIo(http, { path: '/socket.io' });
