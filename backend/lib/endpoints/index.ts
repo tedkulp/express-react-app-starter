@@ -1,7 +1,10 @@
+import { Application, json } from 'express';
 import * as fs from 'fs';
 
-export const init = app => {
+export const init = (app: Application) => {
     const files = fs.readdirSync(__dirname);
+
+    app.use(json());
 
     files.forEach(fileName => {
         if (fileName !== 'index.ts') {

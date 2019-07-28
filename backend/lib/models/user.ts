@@ -1,6 +1,16 @@
 import mongoose from '../database';
 
-const userSchema = new mongoose.Schema(
+export interface IUser {
+    name: number;
+    username: string;
+    password: string;
+    admin?: boolean;
+    location?: string;
+};
+
+export interface IUserModel extends IUser, mongoose.Document {};
+
+export const userSchema: mongoose.Schema = new mongoose.Schema(
     {
         name: String,
         username: { type: String, required: true, unique: true },
@@ -9,13 +19,17 @@ const userSchema = new mongoose.Schema(
         location: String,
     },
     {
-        timestamps: {},
+        timestamps: true,
+        collection: 'users'
     }
 );
 
-const user = mongoose.model('User', userSchema);
+export const userModel: mongoose.Model<IUserModel> = mongoose.model<IUserModel>(
+    'UserModel',
+    userSchema
+);
 
 export {
-    user as model,
+    userModel as model,
     userSchema as schema,
 };

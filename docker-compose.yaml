@@ -4,10 +4,15 @@ services:
     image: mongo
     ports:
       - "27017:27017"
+    volumes:
+      - ./mongo-data:/data/db
   redis:
     image: redis
+    command: "redis-server --appendonly yes"
     ports:
       - "6379:6379"
+    volumes:
+      - ./redis-data:/data
   backend:
     build:
       context: ./backend
@@ -17,7 +22,7 @@ services:
     environment:
       DOCKER_MONGODB_HOST: "mongo"
       DOCKER_REDIS_HOST: "redis"
-      JWT_ACCESS_CODE: "KMhkjBPsAu7j48btrQTt3LZy1pOD4oPqdQEYGhEqHF6EE0eKIKPKvZ5AvLcPcngp137a5nl009FwV4sf"
+      JWT_ACCESS_CODE: "yVLkmeMnIMmkGhQ8Lg83ER7EbYQZuOJGmZ0evJ8VmCWfcwGTTtO7d4FK7ytalPYQCXTK3rkagprvXKoz"
     depends_on:
       - mongo
       - redis

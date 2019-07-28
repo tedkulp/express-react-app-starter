@@ -10,7 +10,7 @@ const http = createServer(expressApp as (req: any, res: any) => void);
 const io = ioInit(http);
 
 const start = () => {
-    http.listen(PORT, () => console.log(`Example app listening on port ${PORT}!`));
+    http.listen(PORT, () => console.log(`Backend listening on port ${PORT}!`));
 };
 
 export default {

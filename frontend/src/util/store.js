@@ -1,23 +1,41 @@
 import { routerMiddleware } from 'connected-react-router';
-import { createBrowserHistory } from 'history';
-import { createStore as _createStore, applyMiddleware, compose } from 'redux';
-import logger from 'redux-logger';
+import { createStore, applyMiddleware, compose } from 'redux';
+import { createLogger } from 'redux-logger';
 import thunk from 'redux-thunk';
 
-import reducer from './reducer';
+import createReducer, { history } from './reducer';
 
-export const history = createBrowserHistory();
-const rootReducer = reducer(history);
+let store;
+const asyncReducers = {};
 
-export function createStore(storeReducer, _client, data) {
-    // eslint-disable-next-line no-undef, no-underscore-dangle
-    const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-    const middleware = [thunk, routerMiddleware(history), logger];
-    const finalCreateStore = composeEnhancers(applyMiddleware(...middleware))(_createStore);
-    const store = finalCreateStore(storeReducer, data);
+// eslint-disable-next-line no-undef, no-underscore-dangle
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const logger = createLogger({
+    diff: true,
+    duration: true,
+});
 
+const middleware = [thunk, routerMiddleware(history), logger];
+const finalCreateStore = composeEnhancers(applyMiddleware(...middleware))(createStore);
+
+export function getStore() {
     return store;
 }
 
-export const store = createStore(rootReducer, null, {});
-export const { dispatch } = store;
+export function getDispatch() {
+    return store.dispatch;
+}
+
+export default function configureStore(initialState = {}) {
+    if (!store) {
+        store = finalCreateStore(createReducer(asyncReducers), initialState);
+    } else {
+        store.replaceReducer(createReducer(asyncReducers));
+    }
+    return store;
+}
+
+export function injectAsyncReducer(name, asyncReducer) {
+    asyncReducers[name] = asyncReducer;
+    return configureStore();
+}

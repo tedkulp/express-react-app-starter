@@ -7,7 +7,7 @@ const schemas = {};
     const files = fs.readdirSync(__dirname);
 
     files.forEach(fileName => {
-        fileName = fileName.replace('.js', '');
+        fileName = fileName.replace('.ts', '');
 
         if (fileName !== 'index') {
             // eslint-disable-next-line global-require, import/no-dynamic-require

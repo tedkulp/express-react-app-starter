@@ -3,3 +3,5 @@
 dist
 docker-compose.yaml
 node_modules
+mongo-data
+redis-data
