@@ -1,18 +1,21 @@
-#!/bin/sh
+#!/bin/bash
 
-#DOCKER_HOST=$(docker-machine ip)
-DOCKER_HOST="127.0.0.1"
-HOST=${1:-$DOCKER_HOST}
+# DOCKER_HOST=$(docker-machine ip)
+# DOCKER_HOST="127.0.0.1"
+# MONGO_HOST=${1:-mongo}
+# REDIS_HOST=${2:-redis}
+
+# echo "$1 $2"
 
 set -eu pipefail
 
 echo "Attempting to connect to mongodb"
-until $(nc -zv $HOST 27017); do
+until $(nc -zv mongo 27017); do
     printf '.'
     sleep 5
 done
 echo "Attempting to connect to redis"
-until $(nc -zv $HOST 6379); do
+until $(nc -zv redis 6379); do
     printf '.'
     sleep 5
 done

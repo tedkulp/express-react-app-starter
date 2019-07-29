@@ -17,6 +17,7 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
+    command: bash -c "./wait-for-services.sh && npm run start"
     volumes:
       - ./backend:/myapp
     environment:

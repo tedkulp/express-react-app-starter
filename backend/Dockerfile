@@ -1,5 +1,7 @@
 FROM node
 
+RUN apt update && apt install -y netcat
+
 RUN mkdir /myapp
 WORKDIR /myapp
 

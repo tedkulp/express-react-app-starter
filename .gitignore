@@ -1,7 +1,9 @@
 .cache
 .DS_Store
+.vscode
+coverage
 dist
 docker-compose.yaml
-node_modules
 mongo-data
+node_modules
 redis-data
